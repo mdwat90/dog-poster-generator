@@ -17,7 +17,6 @@ export const getSubBreeds = async (breed: string) => {
         throw new Error('Oops! Something went wrong fetching sub breeds...')
     }
     ).catch(err => { throw err });
-
     return response;
 }
 

@@ -10,11 +10,11 @@ interface RowSelectionProps {
     queries: Query[],
     query: Query,
     dispatchQueries: (q: Query) => void;
+    dispatchError: (err: string) => void;
 }
 
-export const RowSelection = ({ breeds, query, dispatchQueries }: RowSelectionProps) => {
+export const RowSelection = ({ breeds, query, dispatchQueries, dispatchError }: RowSelectionProps) => {
     const [subBreeds, setSubBreeds] = useState<string[]>();
-    const dispatch = useDispatch();
 
     useEffect(() => {
         if (query.selectedBreed && !subBreeds) {
@@ -22,7 +22,7 @@ export const RowSelection = ({ breeds, query, dispatchQueries }: RowSelectionPro
                 if(resp.message.length > 0) {
                     setSubBreeds(resp.message);
                 }
-            }).catch(err => dispatch(setError(err)));
+            }).catch(err => dispatchError(err));
         }
     })
     

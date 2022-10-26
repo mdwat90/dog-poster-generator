@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Query, setQueries } from '../../reducerSlices/appStateSlice';
+import { Query, setError, setQueries } from '../../reducerSlices/appStateSlice';
 
 interface HOCData {
     breeds: string[],
@@ -22,9 +22,13 @@ export const withDispatch = (WrappedComponent: React.ElementType, data: HOCData)
             });
             dispatch(setQueries(newQueriesArr))
         }
+        
+        const dispatchError = (error: string) => {
+            dispatch(setError(error));
+        }
   
         return (
-            <WrappedComponent dispatchQueries={dispatchQueries} {...data} />
+            <WrappedComponent dispatchQueries={dispatchQueries} dispatchError={dispatchError} {...data} />
         )
     };
 

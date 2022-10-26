@@ -29,7 +29,6 @@ function App() {
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
-      setError(null);
       getBreeds().then(resp => dispatch(setBreeds(resp))).catch(err => dispatch(setError(err)));
     }
   })
