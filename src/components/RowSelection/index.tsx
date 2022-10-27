@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { getSubBreeds } from '../../api';
-import { Query, setError } from '../../reducerSlices/appStateSlice';
+import { Query } from '../../reducerSlices/appStateSlice';
 import { FormInput } from '../FormInput';
 import { FormSelect } from '../FormSelect';
 
